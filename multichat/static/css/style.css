@@ -23,50 +23,57 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
 body {
     line-height: 1;
     font-family: sans-serif;
 }
+
 ol, ul {
     list-style: none;
 }
+
 blockquote, q {
     quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
 
 /* Header */
-
 header {
     padding: 20px 0;
     margin: 0 0 40px 0;
     background: #5778C4;
     color: #fff;
 }
-    header h1 {
-        width: 800px;
-        margin: 0 auto;
-        font-size: 40px;
-    }
-    header a {
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        color: #fff;
-    }
+
+header h1 {
+    width: 800px;
+    margin: 0 auto;
+    font-size: 40px;
+}
+
+header a {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #fff;
+}
 
 /* Body */
 section {
@@ -92,49 +99,128 @@ p {
     border-radius: 2px;
     cursor: pointer;
 }
-    .rooms li.joined {
-        background: #5898D9;
-        border: 1px solid #35485C;
-    }
 
-#chats {
+.rooms li.joined {
+    background: #5898D9;
+    border: 1px solid #35485C;
 }
-    #chats .room {
-        border: 1px solid #ccc;
-        padding: 5px;
-        margin: 30px 0 0 0;
-    }
-    #chats h2 {
-        color: #333;
-        margin: 2px 0 5px 0;
-        font-weight: bold;
-    }
-    #chats .messages {
-        height: 200px;
-        overflow: auto;
-        background: #eee;
-        margin: 2px 0 5px 0;
-    }
-    #chats .username {
-        display: inline-block;
-        color: #C07A36;
-        width: 100px;
-        font-weight: bold;
-    }
-    #chats .contextual-message{
-        text-align: center;
-        margin: 5px 5px 5px 5px;
-    }
-    #chats .text-muted {
-        opacity: .6;
-        font-style: italic;
-    }
-    #chats .text-danger {
-        color: #a94442;
-        font-weight: bold;
-    }
-    #chats .text-warning {
-        color: #DCAD5C;
-        font-weight: bold;
-        font-style: italic;
-    }
+
+#chats {}
+
+#chats .room {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 30px 0 0 0;
+}
+
+#chats h2 {
+    color: #333;
+    margin: 2px 0 5px 0;
+    font-weight: bold;
+}
+
+#chats .messages {
+    height: 200px;
+    overflow: auto;
+    background: #eee;
+    margin: 2px 0 5px 0;
+}
+
+#chats .username {
+    display: inline-block;
+    color: #C07A36;
+    width: 100px;
+    font-weight: bold;
+}
+
+#chats .contextual-message {
+    text-align: center;
+    margin: 5px 5px 5px 5px;
+}
+
+#chats .text-muted {
+    opacity: .6;
+    font-style: italic;
+}
+
+#chats .text-danger {
+    color: #a94442;
+    font-weight: bold;
+}
+
+#chats .text-warning {
+    color: #DCAD5C;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Cookie Consent Popup */
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #5778C4;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.cookie-consent button {
+    background-color: #fff;
+    color: #5778C4;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cookie-consent button:hover {
+    background-color: #f0f0f0;
+}
+
+.cookie-consent p {
+    margin: 0;
+    display: inline;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: white; /* Light text */
+}
+
+header {
+    background-color: #1e1e1e; /* Dark header */
+}
+
+.rooms li {
+    background: #333; /* Dark background for rooms */
+    border: 1px solid #444; /* Dark border for rooms */
+}
+
+.rooms li.joined {
+    background: #2a82d2; /* Lighter blue for joined rooms */
+}
+
+#chats .messages {
+    background: #222; /* Dark background for messages */
+}
+
+#chats h2 {
+    color: #fff; /* Light text for chat titles */
+}
+
+#chats .username {
+    color: #ffd700; /* Yellow color for usernames */
+}
+
+#chats .text-danger {
+    color: #ff4d4d; /* Bright red for danger messages */
+}
+
+#chats .text-warning {
+    color: #ffcc00; /* Yellow for warning messages */
+}

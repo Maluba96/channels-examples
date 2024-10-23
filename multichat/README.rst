@@ -1,6 +1,6 @@
 MultiChat
 =========
-
+<!-- Superuser username: malub user1@gmail.com password: test -->
 Basic example of a multi-room chatroom, with messages from all rooms a user
 is in multiplexed over a single WebSocket connection.
 

@@ -25,7 +25,7 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
         # Are they logged in?
         if self.scope["user"].is_anonymous:
             # Reject the connection
-            await self.close()
+            await self.close()  
         else:
             # Accept the connection
             await self.accept()

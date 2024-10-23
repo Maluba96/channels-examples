@@ -4,11 +4,17 @@
 {% block header_text %}Login{% endblock %}
 
 {% block content %}
-
     <form action="." method="POST">
-        {{ form }}
         {% csrf_token %}
-        <button>Login</button>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Login</button>
     </form>
-
 {% endblock %}
+
+
+<!-- Superuser username: malub user1@gmail.com password: test -->

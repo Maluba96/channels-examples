@@ -12,19 +12,14 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 ##### Channels-specific settings
 
 redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
-# Channel layer definitions
-# http://channels.readthedocs.io/en/latest/topics/channel_layers.html
 CHANNEL_LAYERS = {
     "default": {
-        # This example app uses the Redis channel layer implementation channels_redis
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
             "hosts": [(redis_host, 6379)],
@@ -32,20 +27,18 @@ CHANNEL_LAYERS = {
     },
 }
 
-# ASGI_APPLICATION should be set to your outermost router
 ASGI_APPLICATION = 'multichat.routing.application'
-
 
 ##### Project-specific settings
 
 NOTIFY_USERS_ON_ENTER_OR_LEAVE_ROOMS = True
 
-MSG_TYPE_MESSAGE = 0  # For standard messages
-MSG_TYPE_WARNING = 1  # For yellow messages
-MSG_TYPE_ALERT = 2  # For red & dangerous alerts
-MSG_TYPE_MUTED = 3  # For just OK information that doesn't bother users
-MSG_TYPE_ENTER = 4  # For just OK information that doesn't bother users
-MSG_TYPE_LEAVE = 5  # For just OK information that doesn't bother users
+MSG_TYPE_MESSAGE = 0
+MSG_TYPE_WARNING = 1
+MSG_TYPE_ALERT = 2
+MSG_TYPE_MUTED = 3
+MSG_TYPE_ENTER = 4
+MSG_TYPE_LEAVE = 5
 
 MESSAGE_TYPES_CHOICES = (
     (MSG_TYPE_MESSAGE, 'MESSAGE'),
@@ -66,14 +59,11 @@ MESSAGE_TYPES_LIST = [
 ]
 
 
-##### Normal Django settings
 
-# SECURITY WARNING: keep the secret key used in production secret! And don't use debug=True in production!
 SECRET_KEY = 'imasecret'
 DEBUG = True
 ALLOWED_HOSTS = []
 
-# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -83,6 +73,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'channels',
     'chat',
+    
 ]
 
 MIDDLEWARE = [
@@ -96,7 +87,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'multichat.urls'
-
 
 TEMPLATES = [
     {
@@ -116,12 +106,9 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'multichat.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -129,17 +116,11 @@ DATABASES = {
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
-# Deliberately turned off for this example.
 AUTH_PASSWORD_VALIDATORS = []
 
 LOGIN_REDIRECT_URL = "/"
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/dev/topics/i18n/
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
@@ -147,10 +128,10 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/dev/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

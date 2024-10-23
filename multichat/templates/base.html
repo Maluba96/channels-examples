@@ -1,27 +1,56 @@
 <!DOCTYPE html>
-
-{% load staticfiles %}
-
+{% load static %}
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
     <meta charset="UTF-8">
-	<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="screen" />
-	<script src="{% static "js/jquery-1.12.2.min.js" %}" type="text/javascript"></script>
-	<script src="{% static "js/reconnecting-websocket.min.js" %}" type="text/javascript"></script>
-	{% block extra_head %}{% endblock %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="screen" />
+    <script src="{% static "js/jquery-1.12.2.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/reconnecting-websocket.min.js" %}" type="text/javascript"></script>
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
-	<header>
-		<h1>{% block header_text %}{% endblock %}</h1>
-		{% if user.is_authenticated %}
-			<a href="/accounts/logout/">Logout</a>
-		{% endif %}
-	</header>
-	<section>
-		{% block content %}
-		{% endblock %}
-	</section>
-	{% block extra_body %}{% endblock %}
+    <header>
+        <h1>{% block header_text %}{% endblock %}</h1>
+        {% if user.is_authenticated %}
+            <a href="/accounts/logout/">Logout</a>
+        {% endif %}
+        <button id="toggle-dark-mode">Toggle Dark Mode</button>
+    </header>
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+
+    <div class="cookie-consent" id="cookie-consent">
+        <p>This website uses cookies to ensure you get the best experience on our website. 
+        <a href="/privacy-policy" style="color: #ffd700;">Learn more</a></p>
+        <button id="accept-cookies">Got it!</button>
+    </div>
+
+    <script>
+        document.getElementById('accept-cookies').onclick = function() {
+            document.getElementById('cookie-consent').style.display = 'none';
+            document.cookie = "cookie_consent=true; path=/; max-age=" + 60*60*24*30; // 30 days
+        };
+
+        document.getElementById('toggle-dark-mode').onclick = function() {
+            console.log('Dark mode button clicked'); // Debugging log
+            document.body.classList.toggle('dark-mode');
+            // Save user preference in local storage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('dark-mode', 'enabled');
+            } else {
+                localStorage.setItem('dark-mode', 'disabled');
+            }
+        };
+
+        // Check for saved user preference in local storage
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+
+    {% block extra_body %}{% endblock %}
 </body>
 </html>

@@ -1,6 +1,5 @@
-Django==2.0.5
-channels==2.1.1
-channels-redis==2.2.1
-requests==2.18.4
-aiohttp==3.2.1
-
+Django>=3.2,<4.0
+channels>=3.0,<4.0  # Adjust based on compatibility
+channels-redis>=3.4.0,<4.0
+requests>=2.26,<3.0
+aiohttp>=3.7.4,<4.0
